@@ -1,8 +1,7 @@
 "use client";
 
 import { navLinks } from '@/constants';
-import {  ClerkProvider,
-    SignInButton,
+import {  
     SignedIn,
     SignedOut,
     UserButton } from '@clerk/nextjs';
