@@ -34,16 +34,16 @@ import mongoose, { Mongoose } from 'mongoose';
 // MongoDB connection URL
 const MONGODB_URL = process.env.MONGODB_URL;
 
-// Interface to define the structure of the Mongoose connection
+// Define Mongoose connection interface
 interface MongooseConnection {
   conn: Mongoose | null;
   promise: Promise<Mongoose> | null;
 }
 
-// Initialize the cached connection
+// Initialize the cached connection from the global object
 let cached: MongooseConnection = global.mongoose || { conn: null, promise: null };
 
-// If not already cached, set up a new cache object
+// Set up a new cache object if not already set
 if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
@@ -63,5 +63,5 @@ export const connectToDatabase = async () => {
   return cached.conn;
 };
 
-// Export the cached connection for use in the app
+// Export the cached connection
 export default cached.conn;
